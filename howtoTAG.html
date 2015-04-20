@@ -5,7 +5,7 @@ Released for free under a Creative Commons Attribution 3.0 License
 -->
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>TiPEX: Download</title>
+<title>Template</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link href="style.css" rel="stylesheet" type="text/css" />
 <!-- CuFon: Enables smooth pretty custom font rendering. 100% SEO friendly. To disable, remove this section -->
@@ -39,47 +39,58 @@ during eXecution<br /><small></small></a></h1></div>
     </div>
   </div>
 
-   <div class="content">
+  <div class="content">
     <div class="content_resize">
       <div class="mainbar">
         <div class="article">
-          <h2><span>Download</span> </h2>
-          <h3><span>TAG (Current Version)</span> </h3>
-			<p>
-			The ".zip" file contains source code and some examples. We also provide README files with details about prerequisits, 
-			and how to use the tool features (with detailing about how the provided examples can be regenerated using the tool).  
-			</p>	
-			
-			<p>
-			Some documentation about how to use the tool, and pre-requisites is also available <a href="howtoTAG.html">here</a>.
-			</p>
-			
-		<p>
-		 TAG: <a href="TAGtool.zip" target="_blank">Download </a>. 	
-		</p>
-		 
-
-		 </ol>
+          <h2><span>Documentation</span> </h2>
+		  
+          <p>
+		    The prototype is implemented in Python (2.6.6), using the libraries PYUPPAAL, DBMPYUPPAAL and PYDBM, written in Python available for download at <a href="http://people.cs.aau.dk/~adavid/python/" target="_blank">http://people.cs.aau.dk/~adavid/python/</a>.
+			Note that the prototype is tested only on Linux (Configuration of the system used is: Intel Core i7-2720QM (4 cores) at 2.20GHz CPU, with 4 GB RAM, and running on Ubuntu 10.10).	
+	     </p>
 		
-		 <h3><span>EMTA+EME (Current Version)</span> </h3>
-			<p>
-			The ".zip" file contains source code and some examples. 
-			We also provide README files with details about prerequisits, 
-			and how to run/use the tool (with the examples we used in the paper).  
-			</p>	
-			
-			<p>
-			Some documentation about how to use the tool, and pre-requisites is also available <a href="howto.html">here</a>.
-			</p>
-			
 		<p>
-		 EMTA+EME: <a href="EMTAtool.zip" target="_blank">Download </a>. 	
+		The experimental framework used, is shown in the figure below. 
+		<img src="fig/testFramework.jpg" width="450" height="200">
+		<br>
+		The Main module uses the module Trace Generator that provides a set of input traces, to test the Store module. 
+		The Trace Generator module takes as input the set of possible actions, the range of delays, the number of traces, and the increment in length per trace. 
+		It returns a set of traces. 
+		The Store module takes as input a property and one trace, and returns the total execution of the update function to process the given input trace.
+		</P>		
+
+		<p>
+		An example of how the main test method is invoked via Python command line is shown in the figure below.
+        <img src="fig/SafetySnap.png" width="700" height="250">
+         		
+			<ul>
+			<li> Import the MainTest module. </li>
+			<li> Define the property. "Example_Safety.xml" is the property in this example, which is a UPPAAL model stored as "xml". (Some more properties are also available in the directory "ExampleProperties"). </li>
+			<li> Define the possible actions (as shown in the image above, the possible actions in this example are 'a', 'b', 'c'). </li>
+			<li> Define the range of possible delays. </li>
+			<li> Invoke the "testStoreProcess" method in the MainTest module, providing the following arguments in order: </li>
+				<ol>
+				<li>&nbsp Property</li>
+				<li>&nbsp actions</li>
+				<li>&nbsp delays</li>
+				<li>&nbsp #traces</li>
+				<li>&nbsp incr</li>
+				</ol>
+			</ul>
 		</p>
-		        
-				
-		</div>
+		<p>	
+		"#traces" is the number of traces we want to use for testing (3 in the example above), each trace varying is length, and "incr" is the increment in length per trace (1000 in the example above).
+		As shown in the figure above, a list of triples(trace length, total execution time of the Update function, average time per call of the Update function)  is returned as the result.
+		</p>	
 		</div>
       
+	 <!-- <div class="article">
+          <h2><span>Lorem Ipsum</span> Dolor Sit</h2>
+          <p>Posted by <a href="#">Owner</a> | Filed under <a href="#">templates</a>, <a href="#">internet</a></p>
+          <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero. Suspendisse bibendum. Cras id urna. <a href="#">Morbi tincidunt, orci ac convallis aliquam, lectus turpis varius lorem, eu posuere nunc justo tempus leo.</a> Donec mattis, purus nec placerat bibendum, dui pede condimentum odio, ac blandit ante orci ut diam. Cras fringilla magna. Phasellus suscipit, leo a pharetra condimentum, lorem tellus eleifend magna, eget fringilla velit magna id neque. Curabitur vel urna. In tristique orci porttitor ipsum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero. Suspendisse bibendum. Cras id urna. Morbi tincidunt, orci ac convallis aliquam.</p>
+          <p><a href="#" class="obg">Read more</a> <span>&nbsp;&bull;&nbsp;</span> <a href="#" class="obg">Comments (7)</a> | March 15, 2015</p>
+        </div> -->
       </div>
 	  
       <div class="sidebar">
@@ -100,7 +111,6 @@ during eXecution<br /><small></small></a></h1></div>
             <li><a href="prototype.html">TiPEX Overview</a></li>
 			<li><a href="download.html">Download</a></li>
 			<li><a href="howto.html">Documentation</a></li>
-			<li><a href="demo.html">Demo</a></li>
           </ul>
         </div>
 		
@@ -111,7 +121,10 @@ during eXecution<br /><small></small></a></h1></div>
 			<li><a href="http://www.ylies.fr/" title="Yliès Falcone"> <font size="2" color="black">Yliès Falcone </font> LIG, Grenoble </a><br /></li>
 			<li><a href="http://people.rennes.inria.fr/Herve.Marchand/" title="Hervé Marchand "> <font size="2" color="black">Hervé Marchand </font> INRIA, Rennes</a><br /></li>
 			<li><a href="http://fr.linkedin.com/pub/srinivas-pinisetty/25/88a/a70" title="Srinivas Pinisetty">  <font size="2" color="black">Srinivas Pinisetty</font> INRIA, Rennes</a><br /></li>
-			
+			<!--
+			<li><a href="http://www.labri.fr/perso/rollet/" title="Antoine Rollet "> <font size="2" color="black">Antoine Rollet</font> , LABRI, Bordeaux</a><br /></li>
+			<li><a href="http://www.labri.fr/perso/nguena/" title="Omer L. NGUENA TIMO "> <font size="2" color="black">Omer L. Nguena Timo </font>, CRIM, Montréal</a><br /></li>
+          -->
 		  </ul>
         </div>
       </div>
