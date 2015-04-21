@@ -5,7 +5,7 @@ Released for free under a Creative Commons Attribution 3.0 License
 -->
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>Template</title>
+<title>TiPEX</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link href="style.css" rel="stylesheet" type="text/css" />
 <!-- CuFon: Enables smooth pretty custom font rendering. 100% SEO friendly. To disable, remove this section -->
@@ -46,24 +46,51 @@ during eXecution<br /><small></small></a></h1></div>
           <h2><span>Documentation</span> </h2>
 		  
           <p>
-		    The prototype is implemented in Python (2.6.6), using the libraries PYUPPAAL, DBMPYUPPAAL and PYDBM, written in Python available for download at <a href="http://people.cs.aau.dk/~adavid/python/" target="_blank">http://people.cs.aau.dk/~adavid/python/</a>.
-			Note that the prototype is tested only on Linux (Configuration of the system used is: Intel Core i7-2720QM (4 cores) at 2.20GHz CPU, with 4 GB RAM, and running on Ubuntu 10.10).	
+		    The EMTA+EME modules are implemented in Python.
+			To implement EMTA, we use the libraries UPPAAL DBM, PYUPPAAL, DBMPYUPPAAL and PYDBM available for download at <a href="http://people.cs.aau.dk/~adavid/python/" target="_blank">http://people.cs.aau.dk/~adavid/python/</a>.
+			Note that the EMTA+EME modules functionality is tested only on Linux (since we use some UPPAAL libraries that work on Linux platform).
+			Configuration of the system used is: Intel Core i7-2720QM (4 cores) at 2.20GHz CPU, with 4 GB RAM, and running on Ubuntu 12.04.	
 	     </p>
+		
+		
+		<br>
+		
+		<p> <b>Prerequisites</b>:
+			<ol>
+				<li> - Python </li>
+				<li> - Install UPPAAL DBM, PYUPPAAL, DBMPYUPPAAL, and PYDBM. Inside the source code, 
+				       these libraries are also provided in the directory "/UppaalLibraries", 
+					   with a directory for each of these libraries inside (containing also their setup and README files),  
+					  These are the libraries we used taken 
+					  from <a href="http://people.cs.aau.dk/~adavid/python/" target="_blank">http://people.cs.aau.dk/~adavid/python/</a>.
+					   </li>
+			<ol>
+		</p>
 		
 		<p>
 		The experimental framework used, is shown in the figure below. 
-		<img src="fig/testFramework.jpg" width="450" height="200">
+		<img src="fig/overview.jpg" width="400" height="350">
 		<br>
-		The Main module uses the module Trace Generator that provides a set of input traces, to test the Store module. 
-		The Trace Generator module takes as input the set of possible actions, the range of delays, the number of traces, and the increment in length per trace. 
+		The Main Test Method uses the module Trace Generator that provides a set of input traces, 
+		to test the Enforcement Monitor (Store process). 
+		The Trace Generator module takes as input the set of possible actions, 
+		the range of delays, the number of traces, 
+		and the increment in length per trace. 
 		It returns a set of traces. 
-		The Store module takes as input a property and one trace, and returns the total execution of the update function to process the given input trace.
+		The Enforcement Monitor module takes as input a property and one trace, and returns the total execution of the update function to process the given input trace.
+		Some more explanation is available in the paper.
 		</P>		
 
+		<br>
+		<br>
 		<p>
-		An example of how the main test method is invoked via Python command line is shown in the figure below.
-        <img src="fig/SafetySnap.png" width="700" height="250">
-         		
+		  <b>Collecting performance data:</b> 
+		  Now, we will see an example of how the main test method is invoked via Python command line, 
+		  to collect performance data for a property (see figure below). 
+		<br>
+		<img src="fig/SafetySnap.png" width="700" height="250">
+        <br>
+		 		
 			<ul>
 			<li> Import the MainTest module. </li>
 			<li> Define the property. "Example_Safety.xml" is the property in this example, which is a UPPAAL model stored as "xml". (Some more properties are also available in the directory "ExampleProperties"). </li>
@@ -78,13 +105,28 @@ during eXecution<br /><small></small></a></h1></div>
 				<li>&nbsp incr</li>
 				</ol>
 			</ul>
-		</p>
+		
+		</P>		
+		
 		<p>	
 		"#traces" is the number of traces we want to use for testing (3 in the example above), each trace varying is length, and "incr" is the increment in length per trace (1000 in the example above).
 		As shown in the figure above, a list of triples(trace length, total execution time of the Update function, average time per call of the Update function)  is returned as the result.
 		</p>	
+		
+		
+		<p>
+		  <b>Testing output:</b> 
+		  Now, we will see an example of how we test the output trace (if it is as expected), 
+		  for a given input trace for some properties. 
+		<br>
+		<img src="fig/SafetySnap.png" width="700" height="250">
+        <br>
+		
+		
 		</div>
       
+	  
+	  
 	 <!-- <div class="article">
           <h2><span>Lorem Ipsum</span> Dolor Sit</h2>
           <p>Posted by <a href="#">Owner</a> | Filed under <a href="#">templates</a>, <a href="#">internet</a></p>
