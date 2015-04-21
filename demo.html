@@ -53,6 +53,8 @@ during eXecution<br /><small></small></a></h1></div>
 		   The only requirement is to have Python installed.
 		   Note that the version of Python used was Python 2.7.
 		   The features of this module are shown in the figure below.
+		   
+		   <img src="fig/overviewTAG.jpg" width="450" height="160">
 		   </p>
 		  
 		  <p>
@@ -62,9 +64,11 @@ during eXecution<br /><small></small></a></h1></div>
 		  <ul>
 		  <li> Browse to the folder containing the source code (which contains the file "GUI_TAG_Tool.py").</li>
 		  <li> Execute the script "GUI_TAG_Tool.py" entering the following line in the command prompt "python GUI_TAG_Tool.py "</li>
-		  <li> A GUI will be launched, using which the user can select to generate a basic TA, or to combine TAs, or to check the class of a TA </li> 
+		  <li> A GUI will be launched (shown in the figure below), using which the user can select to generate a basic TA, or to combine TAs, or to check the class of a TA </li> 
 		  </ul>
 		  We will now demonstrate how to use each feature via an example.
+		  <img src="fig/GUItag.png" width="300" height="200" align="middle">
+		  	  
 		  </p>
 
 		  
@@ -72,59 +76,79 @@ during eXecution<br /><small></small></a></h1></div>
           <h4><span>Generating Basic TA</span> </h4>
 		  <p>
 		   Clicking "GenerateBasicTA" will launch the GUI shown below.
-		  The following lines show data that is entered to generate TA defining requirement "".
-		  
-		  After entering the following data in respective fields, and clicking "GenerateTA" button, ...
-	 
-		  <ul>
-		  <li>  Action1: a </li>
-		  <li> Action2: b </li>
-		  <li> Pattern: Precedence </li> 
-		  <li> Complexity: 3  </li>
-		  <li> Time constraint value: 5 </li>
-		  </ul>
+		   <img src="fig/generateTA.png" width="300" height="200" align="middle">
 		  </p>
 		  
+		  <p>
+		  The following lines show data that is entered to generate TA defining requirement 
+		  <i>"A sequence of "3" "a" actions enables action "b" after a delay of at least "5" time units"</i>.
+		  		  
+		  <ol>
+		  <li> # <b> Action1 </b>: a </li>
+		  <li> # <b> Action2 </b>: b </li>
+		  <li> # <b> Pattern </b>: Precedence </li> 
+		  <li> # <b> Complexity </b>: 3  </li>
+		  <li> # <b> Time constraint value </b>: 5 </li>
+		  </ol>
+		  </p>
+		  
+		  After entering this data in respective fields, and clicking "GenerateTA" button, a ".xml" file will be gnerated 
+		  with name "Example_Gen", containing the TA in UPPAAL format in the directory "\ToolBasicTAgenerator".
+		  The figure below shows the generated generated TA (.xml) file is opened/viewed in UPPAAL.
+		  <img src="fig/precedence.jpg" width="300" height="200" align="middle">
+		  <br>
+		  <b>NOTE:</b> Please check the README file in the directory "\ToolBasicTAgenerator" for more examples of usage, 
+		  and other details.
+		 <br>
+		<br>
+		  
+		  <h4><span>Boolean Operations</span> </h4>
+		  <p>
+		   Clicking "CombineTAs" will launch the GUI shown below.
+		   <img src="fig/combineTAs.png" width="300" height="200">
+		  </p>
 		  
 		  <p>
-		    The prototype is implemented in Python (2.6.6), using the libraries PYUPPAAL, DBMPYUPPAAL and PYDBM, written in Python available for download at <a href="http://people.cs.aau.dk/~adavid/python/" target="_blank">http://people.cs.aau.dk/~adavid/python/</a>.
-			Note that the prototype is tested only on Linux (Configuration of the system used is: Intel Core i7-2720QM (4 cores) at 2.20GHz CPU, with 4 GB RAM, and running on Ubuntu 10.10).	
-	     </p>
-		
-		<p>
-		The experimental framework used, is shown in the figure below. 
-		<img src="fig/testFramework.jpg" width="450" height="200">
+		  
+		  Clicking "SelectFile" button will allow the user to select a input UPPAAL model.
+		  The input UPPAAL model (stored as .xml) selected by the user, 
+		  should contain two input TAs (defined as two different templates). 
+	      Note that in the input TAs, accepting locations should be named as "FINAL".
+		  The user should select an operation.
+		  The resulting TA will be written as another template in the UPPAAL model file given as input by the user. 
+		  
+		  <br>
+		  
+		  There are example input models in the directory "\Tool_TA_BooleanOperations\ExampleInputTAs".
+		  The "Example.xml" in the directory contains the two following input TAs.
+		  <img src="fig/inpProp.png" width="500" height="130" align="middle">
+		  <br>
+		  By selecting "Example.xml" as input file, and operation as "union", 
+		  the resulting TA after performing Union operation on the two input TAs (writen as another additional template in Example.xml)  is show below.
+		  <img src="fig/TA_Union.jpg" width="300" height="180" align="middle">
+		  		  
+		  <br>
+		  <b>NOTE:</b> Please check the README file in the directory "\Tool_TA_BooleanOperations\" for more details.
 		<br>
-		The Main module uses the module Trace Generator that provides a set of input traces, to test the Store module. 
-		The Trace Generator module takes as input the set of possible actions, the range of delays, the number of traces, and the increment in length per trace. 
-		It returns a set of traces. 
-		The Store module takes as input a property and one trace, and returns the total execution of the update function to process the given input trace.
-		</P>		
-
-		<p>
-		An example of how the main test method is invoked via Python command line is shown in the figure below.
-        <img src="fig/SafetySnap.png" width="700" height="250">
-         		
-			<ul>
-			<li> Import the MainTest module. </li>
-			<li> Define the property. "Example_Safety.xml" is the property in this example, which is a UPPAAL model stored as "xml". (Some more properties are also available in the directory "ExampleProperties"). </li>
-			<li> Define the possible actions (as shown in the image above, the possible actions in this example are 'a', 'b', 'c'). </li>
-			<li> Define the range of possible delays. </li>
-			<li> Invoke the "testStoreProcess" method in the MainTest module, providing the following arguments in order: </li>
-				<ol>
-				<li>&nbsp Property</li>
-				<li>&nbsp actions</li>
-				<li>&nbsp delays</li>
-				<li>&nbsp #traces</li>
-				<li>&nbsp incr</li>
-				</ol>
-			</ul>
+		<br>
+	
+	<h4><span>Class Checker</span> </h4>
+		  <p>
+		   Clicking "CheckClass" will launch the GUI shown below,
+		  using which the user can provide the input TA (in UPPAAL format stored as .xml) and check its class
+		  Clicking "ChooseFile" button will allow the user to selectthe input TA (in UPPAAL format stored as .xml), 
+		  and check its class.
+		  In the directory "\Tool_TA_ClassIdentifier\ExampleInputTAs", there are some example TAs.
+		   <br>
+		   <img src="fig/classChecker.png" width="200" height="150">
+		  
+		  		  
+		  <br>
+		  <b>NOTE:</b> Please check the README file in the directory "\Tool_TA_ClassIdentifier\" for additional details.
 		</p>
-		<p>	
-		"#traces" is the number of traces we want to use for testing (3 in the example above), each trace varying is length, and "incr" is the increment in length per trace (1000 in the example above).
-		As shown in the figure above, a list of triples(trace length, total execution time of the Update function, average time per call of the Update function)  is returned as the result.
-		</p>	
-		</div>
+	
+	
+	</div>
       
 	 <!-- <div class="article">
           <h2><span>Lorem Ipsum</span> Dolor Sit</h2>
