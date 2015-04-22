@@ -47,16 +47,19 @@ during eXecution<br /><small></small></a></h1></div>
 		   
 		   <p>
 		   <b>Prerequisits</b>: The TAG module is implemented in Python.
-		   This module is independent from the EMTA and EME modules.
 		   The only requirement is to have Python installed.
 		   Note that the version of Python used was Python 2.7.
-		   The features of this module are shown in the figure below.
+		   </p>
 		   
+		   <p>
+		   This module is independent from the EMTA and EME modules.
+		   The features of this module are shown in the figure below.
+		   <br>
 		   <img src="fig/overviewTAG.jpg" width="420" height="130">
 		   </p>
 		  
 		  <p>
-		  Example Usage: The TAG tool has a basic GUI.
+		  <b> Usage on an example</b> : The TAG tool has a basic GUI.
 		  The following lines demonstrates how to launch the GUI via python comand line.
 		  
 		  <ul>
@@ -73,7 +76,7 @@ during eXecution<br /><small></small></a></h1></div>
 		  
           <h3><span>Generating Basic TA</span> </h3>
 		  <p>
-		   Clicking "GenerateBasicTA" will launch the GUI shown below.
+		   Clicking "<b>GenerateBasicTA</b>" launches the GUI shown below.
 		   <img src="fig/generateTA.png" width="300" height="200" align="middle">
 		  </p>
 		  
@@ -82,18 +85,18 @@ during eXecution<br /><small></small></a></h1></div>
 		  <i>"A sequence of "3" "a" actions enables action "b" after a delay of at least "5" time units"</i>.
 		  		  
 		  <ol>
-		  <li> # <b> Action1 </b>: a </li>
-		  <li> # <b> Action2 </b>: b </li>
-		  <li> # <b> Pattern </b>: Precedence </li> 
-		  <li> # <b> Complexity </b>: 3  </li>
-		  <li> # <b> Time constraint value </b>: 5 </li>
+		  <li> # <b> Action1</b>: a </li>
+		  <li> # <b> Action2</b>: b </li>
+		  <li> # <b> Pattern</b>: Precedence </li> 
+		  <li> # <b> Complexity</b>: 3  </li>
+		  <li> # <b> Time constraint value</b>: 5 </li>
 		  </ol>
 		  </p>
 		  
-		  After entering this data in respective fields, and clicking "GenerateTA" button, a ".xml" file will be gnerated 
+		  After entering this data in respective fields, and clicking "<b>GenerateTA</b>" button, a ".xml" file will be gnerated 
 		  with name "Example_Gen", containing the TA in UPPAAL format in the directory "\ToolBasicTAgenerator".
 		  The figure below shows the generated generated TA (.xml) file is opened/viewed in UPPAAL.
-		  <img src="fig/precedence2.png" width="300" height="200">
+		  <img src="fig/precedence2.jpg" width="280" height="170">
 		  <br>
 		  <b>NOTE:</b> Please check the README file in the directory "\ToolBasicTAgenerator" for more examples of usage, 
 		  and other details.
@@ -102,13 +105,13 @@ during eXecution<br /><small></small></a></h1></div>
 		  
 		  <h3><span>Boolean Operations</span> </h3>
 		  <p>
-		   Clicking "CombineTAs" will launch the GUI shown below.
+		   Clicking "<b>Combine TAs</b>" will launch the GUI shown below.
 		   <img src="fig/combineTAs.png" width="300" height="200">
 		  </p>
 		  
 		  <p>
 		  
-		  Clicking "SelectFile" button will allow the user to select a input UPPAAL model.
+		  Clicking "<b>Select File</b>" button will allow the user to select a input UPPAAL model.
 		  The input UPPAAL model (stored as .xml) selected by the user, 
 		  should contain two input TAs (defined as two different templates). 
 	      Note that in the input TAs, accepting locations should be named as "FINAL".
@@ -121,7 +124,7 @@ during eXecution<br /><small></small></a></h1></div>
 		  The "Example.xml" in the directory contains the two following input TAs.
 		  <img src="fig/inpProp.png" width="500" height="130" align="middle">
 		  <br>
-		  By selecting "Example.xml" as input file, and operation as "union", 
+		  By selecting "Example.xml" as input file, and "union" as operation, 
 		  the resulting TA after performing Union operation on the two input TAs (writen as another additional template in Example.xml)  is show below.
 		  <img src="fig/TA_Union.jpg" width="300" height="180" align="middle">
 		  		  
@@ -132,9 +135,9 @@ during eXecution<br /><small></small></a></h1></div>
 	
 	<h3><span>Class Checker</span> </h3>
 		  <p>
-		   Clicking "CheckClass" will launch the GUI shown below,
-		  using which the user can provide the input TA (in UPPAAL format stored as .xml) and check its class
-		  Clicking "ChooseFile" button will allow the user to selectthe input TA (in UPPAAL format stored as .xml), 
+		   Clicking "<b>Check Class</b>"  launches the GUI shown below.
+		  The user should provide the input TA (in UPPAAL format stored as .xml), to check its class.
+		  Clicking "<b>Choose File</b>" button will allow the user to select the input TA, 
 		  and check its class.
 		  In the directory "\Tool_TA_ClassIdentifier\ExampleInputTAs", there are some example TAs.
 		   <br>
